@@ -1,0 +1,36 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+
+<head> 
+    <meta charset="UTF-8" /> 
+    <meta name="viewport"
+        content="width=device-width, 
+                initial-scale=1.0" /> 
+    <title>Word Scramble</title> 
+    <link href="style.css" rel="stylesheet" /> 
+</head> 
+
+<body> 
+    <div class="container"> 
+        <div class="game-container"> 
+            <h1 class="game-title">Word Scramble</h1> 
+            <div id="scrambled-word"> 
+                <h2 id="scramble-word">Shuffled Word</h2> 
+                <p id="hint-text"></p> 
+            </div> 
+            <div id="form"> 
+                <input id="input-word"
+                    type="text"
+                    placeholder="Enter your guess" /> 
+            </div> 
+            <!-- <h3 id="output">Result:</h3>  -->
+            <div class="button-container"> 
+                <button type="button" onclick="checkGuess()">Check</button> 
+                <button type="button" onclick="shuffleWord()">Shuffle</button> 
+            </div> 
+        </div> 
+        <script src="app.js"></script> 
+    </div> 
+</body> 
+
+</html>
