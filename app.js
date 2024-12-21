@@ -1,3 +1,4 @@
+// Array of words for the game
 const words = [
     "computer",
     "elephant",
@@ -17,6 +18,7 @@ const words = [
     "volcano",
 ];
 
+// Hints corresponding to the words
 const hints = [
     "Electronic device",
     "Large mammal",
@@ -35,10 +37,12 @@ const hints = [
     "Falling water",
     "Erupting mountain",
 ];
+
 let displayWord = "";
 let timer;
 let correctCount = 0;
 
+// Function to shuffle a string
 function shuffle(str) {
     let strArray = Array.from(str);
     for (let i = 0; i < strArray.length - 1; ++i) {
@@ -50,6 +54,7 @@ function shuffle(str) {
     return strArray.join("");
 }
 
+// Function to check the user's guess
 function checkGuess() {
     let input = document.getElementById("input-word");
     if (input.value.toLowerCase() === displayWord) {
@@ -68,6 +73,7 @@ function checkGuess() {
     }
 }
 
+// Function to shuffle the word and update the hint
 function shuffleWord() {
     document.getElementById("input-word").value = "";
 
@@ -80,6 +86,7 @@ function shuffleWord() {
     hint.innerHTML = "<b>Hint:</b> " + displayHint;
 }
 
+// Function to start the timer
 function startTimer() {
     let timeLeft = 20;
     timer = setInterval(() => {
@@ -93,6 +100,7 @@ function startTimer() {
     }, 1000);
 }
 
+// Function to start the game
 function startGame() {
     document.getElementById("start-button").style.display = "none";
     document.getElementById("form").style.display = "block";
@@ -106,10 +114,12 @@ function startGame() {
     shuffleWord();
 }
 
+// Function to update the correct count display
 function updateCorrectCount() {
     document.getElementById("correct-count").innerText = correctCount;
 }
 
+// Function to reset the game
 function resetGame() {
     clearInterval(timer);
     correctCount = 0;
