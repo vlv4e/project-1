@@ -1,4 +1,3 @@
-// Array of words to be guessed
 const words = [
     "computer",
     "elephant",
@@ -11,9 +10,13 @@ const words = [
     "sunflower",
     "butterfly",
     "cristiano",
+    "pineapple",
+    "jungle",
+    "astronaut",
+    "waterfall",
+    "volcano",
 ];
 
-// Array of hints corresponding to the words
 const hints = [
     "Electronic device",
     "Large mammal",
@@ -26,12 +29,16 @@ const hints = [
     "Bright yellow flower",
     "Insect with colorful wings",
     "Best footballer ever, the GOAT",
+    "Tropical fruit",
+    "Tropical forest",
+    "Space traveler",
+    "Falling water",
+    "Erupting mountain",
 ];
 
-// Variable to store the current word to be guessed
 let displayWord = "";
+let timer;
 
-// Function to shuffle the characters of a string
 function shuffle(str) {
     let strArray = Array.from(str);
     for (let i = 0; i < strArray.length - 1; ++i) {
@@ -43,7 +50,6 @@ function shuffle(str) {
     return strArray.join("");
 }
 
-// Function to check the player's guess
 function checkGuess() {
     let input = document.getElementById("input-word");
     if (input.value.toLowerCase() === displayWord) {
@@ -52,23 +58,47 @@ function checkGuess() {
         } else {
             alert("Correct!");
         }
+        clearInterval(timer);
+        startTimer();
+        shuffleWord();
     } else {
         alert("Incorrect. Try again!");
     }
 }
 
-// Function to set up a new word for the game
 function shuffleWord() {
+    document.getElementById("input-word").value = "";
+
     let index = Math.floor(Math.random() * words.length);
     displayWord = words[index];
     let displayHint = hints[index];
     let scrambleWord = document.getElementById("scramble-word");
-    // Display the scrambled word in uppercase
     scrambleWord.innerText = shuffle(displayWord).toUpperCase();
     let hint = document.getElementById("hint-text");
-    // Display the hint
     hint.innerHTML = "<b>Hint:</b> " + displayHint;
 }
 
-// Initialize the game by shuffling the first word
-shuffleWord();
+function startTimer() {
+    let timeLeft = 20;
+    timer = setInterval(() => {
+        document.getElementById("countdown").innerText = timeLeft;
+        timeLeft--;
+        if (timeLeft < 0) {
+            clearInterval(timer);
+            alert("Time's up!");
+            shuffleWord();
+            timeLeft = 20;
+            startTimer();
+        }
+    }, 1000);
+}
+
+function startGame() {
+    document.getElementById("start-button").style.display = "none";
+    document.getElementById("form").style.display = "block";
+    document.getElementById("check-button").style.display = "inline-block";
+    document.getElementById("shuffle-button").style.display = "inline-block";
+    document.getElementById("timer").style.display = "block";
+    startTimer();
+    shuffleWord();
+}
