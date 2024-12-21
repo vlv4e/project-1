@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Word Scramble</title>
     <link href="style.css" rel="stylesheet">
+    <script src="app.js"></script>
 </head>
 
 <body>
@@ -15,6 +16,8 @@
             <h2 id="scramble-word">Shuffled Word</h2>
             <p id="hint-text"></p>
         </div>
+        <div id="correct-guessed" style="display: none;">Correct Words Guessed: <span id="correct-count">0</span></div>
+
         <div id="form" style="display: none;">
             <input id="input-word" type="text" placeholder="Enter your guess">
         </div>
@@ -25,7 +28,6 @@
         </div>
         <div id="timer" style="display: none;">Time left: <span id="countdown"></span> seconds</div>
     </div>
-    <script src="app.js"></script>
 </body>
 
 </html>

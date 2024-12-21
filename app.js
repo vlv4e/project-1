@@ -35,9 +35,9 @@ const hints = [
     "Falling water",
     "Erupting mountain",
 ];
-
 let displayWord = "";
 let timer;
+let correctCount = 0;
 
 function shuffle(str) {
     let strArray = Array.from(str);
@@ -57,10 +57,12 @@ function checkGuess() {
             alert("Suiiiiiiiiiiiii");
         } else {
             alert("Correct!");
+            correctCount++;
+            updateCorrectCount();
+            clearInterval(timer);
+            startTimer();
+            shuffleWord();
         }
-        clearInterval(timer);
-        startTimer();
-        shuffleWord();
     } else {
         alert("Incorrect. Try again!");
     }
@@ -86,9 +88,7 @@ function startTimer() {
         if (timeLeft < 0) {
             clearInterval(timer);
             alert("Time's up!");
-            shuffleWord();
-            timeLeft = 20;
-            startTimer();
+            resetGame();
         }
     }, 1000);
 }
@@ -99,6 +99,21 @@ function startGame() {
     document.getElementById("check-button").style.display = "inline-block";
     document.getElementById("shuffle-button").style.display = "inline-block";
     document.getElementById("timer").style.display = "block";
+    // Hide the correct count initially
+    document.getElementById("correct-guessed").style.display = "block";
+    document.getElementById("correct-count").innerText = correctCount;
     startTimer();
     shuffleWord();
+}
+
+function updateCorrectCount() {
+    document.getElementById("correct-count").innerText = correctCount;
+}
+
+function resetGame() {
+    clearInterval(timer);
+    correctCount = 0;
+    updateCorrectCount();
+    shuffleWord();
+    startTimer();
 }
