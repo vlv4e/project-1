@@ -1,4 +1,4 @@
-// Array of words for the game
+// words to be guessed array
 const words = [
     "computer",
     "elephant",
@@ -18,7 +18,7 @@ const words = [
     "volcano",
 ];
 
-// Hints corresponding to the words
+// hints for the words // 1to1
 const hints = [
     "Electronic device",
     "Large mammal",
@@ -42,7 +42,7 @@ let displayWord = "";
 let timer;
 let correctCount = 0;
 
-// Function to shuffle a string
+// function to shuffle a string
 function shuffle(str) {
     let strArray = Array.from(str);
     for (let i = 0; i < strArray.length - 1; ++i) {
@@ -54,7 +54,7 @@ function shuffle(str) {
     return strArray.join("");
 }
 
-// Function to check the user's guess
+// Ffunction to check the user's guess
 function checkGuess() {
     let input = document.getElementById("input-word");
     if (input.value.toLowerCase() === displayWord) {
@@ -69,11 +69,11 @@ function checkGuess() {
             shuffleWord();
         }
     } else {
-        alert("Incorrect. Try again!");
+        alert("Incorrect. try again!");
     }
 }
 
-// Function to shuffle the word and update the hint
+// function to shuffle the word and update the hint
 function shuffleWord() {
     document.getElementById("input-word").value = "";
 
@@ -86,7 +86,7 @@ function shuffleWord() {
     hint.innerHTML = "<b>Hint:</b> " + displayHint;
 }
 
-// Function to start the timer
+// function to start the timer
 function startTimer() {
     let timeLeft = 20;
     timer = setInterval(() => {
@@ -100,26 +100,26 @@ function startTimer() {
     }, 1000);
 }
 
-// Function to start the game
+// function to start the game
 function startGame() {
     document.getElementById("start-button").style.display = "none";
     document.getElementById("form").style.display = "block";
     document.getElementById("check-button").style.display = "inline-block";
     document.getElementById("shuffle-button").style.display = "inline-block";
     document.getElementById("timer").style.display = "block";
-    // Hide the correct count initially
+    // hide the correct count initially
     document.getElementById("correct-guessed").style.display = "block";
     document.getElementById("correct-count").innerText = correctCount;
     startTimer();
     shuffleWord();
 }
 
-// Function to update the correct count display
+// function to update the correct count display
 function updateCorrectCount() {
     document.getElementById("correct-count").innerText = correctCount;
 }
 
-// Function to reset the game
+// function to reset the game
 function resetGame() {
     clearInterval(timer);
     correctCount = 0;

@@ -71,7 +71,7 @@ button:hover {
     margin-top: 20px;
     text-align: center;
     width: 90%;
-    margin-bottom: 20px; /* Add margin at the bottom to separate from the input box */
+    margin-bottom: 20px;
 }
 
 #correct-count {
@@ -80,5 +80,4 @@ button:hover {
     color: #333;
     text-align: center;
     width: 90%;
-    margin-top: 20px; /* Add margin at the top to separate from the input box */
-}
+    margin-top: 20px;}
